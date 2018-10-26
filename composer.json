@@ -1,0 +1,13 @@
+{
+    "name": "vendi-advertising/secrets",
+    "description": "Vendi Secrets Transfer",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Haas",
+            "email": "chris@vendiadvertising.com"
+        }
+    ],
+    "require": {}
+}
