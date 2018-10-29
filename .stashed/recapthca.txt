@@ -1,0 +1,38 @@
+$recaptcha_sitekey = getenv('recaptcha_sitekey');
+$recaptcha_secretkey = getenv('recaptcha_secretkey');
+
+if (isset($_POST['g-recaptcha-response'])){
+    $gRecaptchaResponse = $_POST['g-recaptcha-response'];
+    $recaptcha = new \ReCaptcha\ReCaptcha($recaptcha_secretkey);
+    $resp = $recaptcha->setExpectedHostname('secrets.helix.vendiadvertising.com')
+                      ->setExpectedAction('action_name')
+                      ->setScoreThreshold(0.5)
+                      ->verify($gRecaptchaResponse);
+    dump($resp);
+    if ($resp->isSuccess()) {
+        // Verified!
+    } else {
+        $errors = $resp->getErrorCodes();
+    }
+}
+
+    <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $recaptcha_sitekey; ?>"></script>
+    <script>
+        grecaptcha
+            .ready(
+                () => {
+                    grecaptcha
+                        .execute(
+                                '<?php echo $recaptcha_sitekey; ?>',
+                                {action: 'action_name'}
+                        )
+                        .then(
+                            (token) => {
+                                console.log(token);
+                            }
+                        );
+                }
+            )
+        ;
+
+    </script>

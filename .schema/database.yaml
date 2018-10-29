@@ -1,0 +1,129 @@
+column_templates:
+
+    char_128_not_null:
+        type: char
+        length: 128
+        not_null: true
+
+    ip_as_string:
+        type: varchar
+        length: 39
+        not_null: true
+
+    varchar_2048:
+        type: varchar
+        length: 2048
+
+    varchar_255:
+        type: varchar
+        length: 255
+
+    creation_date:
+        not_null: true
+        type: datetime
+        default: CURRENT_TIMESTAMP
+
+    modification_date:
+        not_null: false
+        type: datetime
+
+tables:
+    users:
+        columns:
+            user_id:
+                template: char_128_not_null
+
+            user_remote_ip:
+                template: ip_as_string
+            user_remote_ua:
+                template: varchar_2048
+                not_null: true
+
+            user_secret:
+                template: varchar_2048
+                not_null: false
+
+            totp_secret:
+                template: varchar_2048
+                not_null: false
+            totp_hash_algo:
+                template: varchar_255
+                not_null: false
+            totp_digit_count:
+                type: tinyint unsigned
+                not_null: false
+            totp_current_token:
+                type: int unsigned
+                not_null: false
+
+            date_time_created:
+                template: creation_date
+            date_time_modified:
+                template: modification_date
+            date_time_last_ping:
+                template: modification_date
+
+        constraints:
+            - type: primary
+              columns: user_id
+
+    user_pings:
+        columns:
+            user_id:
+                template: char_128_not_null
+            date_time_created:
+                template: creation_date
+
+        constraints:
+            - type: foreign
+              column: user_id
+              references_column: user_id
+              references_table: users
+
+# --Maybe would should PK on session_id and user_id? Right now this allows
+# --single user to have multiple sessions. Not sure if this is good or bad.
+# --Might need to run a cron sweeper.
+    sessions:
+        columns:
+            session_id:
+                template: char_128_not_null
+            user_id:
+                template: char_128_not_null
+            date_time_created:
+                template: creation_date
+            date_time_modified:
+                template: modification_date
+            participant_count:
+                type: tinyint unsigned
+                not_null: true
+
+        constraints:
+            - type: primary
+              columns: session_id
+            - type: foreign
+              column: user_id
+              references_column: user_id
+              references_table: users
+
+    session_participants:
+        columns:
+            session_id:
+                template: char_128_not_null
+            user_id:
+                template: char_128_not_null
+            date_time_created:
+                template: creation_date
+
+        constraints:
+            - type: primary
+              columns:
+                - session_id
+                - user_id
+            - type: foreign
+              column: user_id
+              references_column: user_id
+              references_table: users
+            - type: foreign
+              column: session_id
+              references_column: session_id
+              references_table: sessions

@@ -1,0 +1,37 @@
+.session-start-options,
+.session-start-options li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.session-start-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
+    margin: 10rem auto 0 auto;
+    width: 60rem;
+}
+
+.session-start-options li {
+    height: 20rem;
+    text-align: center;
+}
+
+.session-start-options li a {
+    align-items: center;
+    background-color: var(--color-primary-blue-darker);
+    border-radius: 2%;
+    border: 0.1rem solid var(--color-primary-blue-darkest);
+    color: var(--color-system-white);
+    display: flex;
+    font-size: 3.6rem;
+    height: 100%;
+    transition: all 250ms ease-in;
+    width: 100%;
+}
+
+.session-start-options li a:hover {
+    background-color: var(--color-primary-blue-lightest);
+    text-decoration: none;
+}

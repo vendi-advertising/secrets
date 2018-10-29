@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+require_once dirname(__DIR__) . '/includes/boot.php';
+
+$application = new Symfony\Component\Console\Application( 'Vendi Secrets', '0.1-dev' );
+$application->add( new Vendi\Secrets\CLI\DatabaseReset() );
+$application->add( new Vendi\Secrets\CLI\DatabaseCLI() );
+$application->run();

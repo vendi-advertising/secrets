@@ -1,0 +1,67 @@
+body.modal-showing {
+    overflow: hidden;
+}
+
+#vendi-secret-modal.overlay {
+    background: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: var(--z-index-modals);
+}
+
+#vendi-secret-modal.is-hidden {
+    display: none;
+}
+
+#vendi-secret-modal .button-close {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAowAAAKMB8MeazgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAB5SURBVDiNrZPRCcAwCEQfnUiySAZuF8kSWeH6Yz8KrQZMQAicJ+epAB0YwAmYJKIADLic0/GPPCbQAnLznCd/4NWUFfkgy1VjH8CryA95ApYltAiTRCZxpuoW+gz9WXE6NPeg+ra1UDIxGlWEObe4SGxY5fIxlc75Bkt9V4JS7KWJAAAAAElFTkSuQmCC59ef34356faa7edebc7ed5432ddb673d');
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0.1rem solid transparent;
+    cursor: pointer;
+    display: inline-block;
+    height: 1.6rem;
+    padding: 0.5rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    transition: all 100ms ease-in;
+    width: 1.6rem;
+}
+
+#vendi-secret-modal .button-close:hover {
+    background-color: #fff;
+    filter: invert(100%);
+}
+
+#vendi-secret-modal .modal-content {
+    background: var(--color-system-white);
+    box-sizing: border-box;
+    height: calc( 100vh - ( 5rem * 2 ) );
+    margin: 5rem;
+    padding: 2rem;
+    position: relative;
+    width: calc( 100vw - ( 5rem * 2 ) );
+}
+
+#vendi-secret-modal .embedded {
+    height: auto;
+    max-width: 100%;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+}
+
+#vendi-secret-modal .embedded iframe,
+#vendi-secret-modal .embedded object,
+#vendi-secret-modal .embedded embed {
+    border: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}

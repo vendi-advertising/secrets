@@ -12,6 +12,26 @@
     "require": {
         "google/recaptcha": "^1.2",
         "symfony/dotenv": "^4.1",
-        "webmozart/path-util": "^2.3"
+        "webmozart/path-util": "^2.3",
+        "spomky-labs/otphp": "^9.1",
+        "vendi-advertising/vendi-shared-utils": "^4.0",
+        "monolog/monolog": "^1.23",
+        "noahheck/e_pdostatement": "^2.3",
+        "paragonie/constant_time_encoding": "^2.2",
+        "paragonie/cookie": "^3.2",
+        "symfony/console": "^4.1",
+        "vendi-advertising/yaml-schema-to-sql": "^1.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.10.2",
+        "jakub-onderka/PHP-Parallel-Lint": "dev-master",
+        "sensiolabs/security-checker": "^5",
+        "symfony/var-dumper": "^4",
+        "symfony/debug": "^4.1",
+        "phpunit/phpunit": "^7",
+        "johnkary/phpunit-speedtrap": "^3.0"
+    },
+    "config": {
+        "optimize-autoloader": true
     }
 }

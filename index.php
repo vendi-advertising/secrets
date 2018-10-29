@@ -1,48 +1,24 @@
 <?php
 
-define('SECRETS_ROOT_DIR', __dir__);
-
-require_once __dir__ . '/vendor/autoload.php';
-
-use Symfony\Component\Dotenv\Dotenv;
-use Webmozart\PathUtil\Path;
-
-$dotenv = new Dotenv();
-
-
-// You can also load several files
-$dotenv->load(
-                Path::join(SECRETS_ROOT_DIR, '.config', '.env.dev')
-            );
-
-$recaptcha_sitekey = getenv('recaptcha_sitekey');
+require_once __DIR__ . '/includes/boot.php';
 
 ?>
 <!doctype html>
 <html lang="en">
 <head>
     <title>Vendi Secrets Transfer</title>
-    <script src="https://www.google.com/recaptcha/api.js?render=<?php echo $recaptcha_sitekey; ?>"></script>
-    <script>
-        grecaptcha
-            .ready(
-                () => {
-                    grecaptcha
-                        .execute(
-                                '<?php echo $recaptcha_sitekey; ?>',
-                                {action: 'action_name'}
-                        )
-                        .then(
-                            (token) => {
-
-                            }
-                        );
-                }
-            )
-        ;
-
-    </script>
+    <link rel="stylesheet" href="/media/css/all.php" />
+    <script type="application/javascript" src="/media/js/all.php"></script>
 </head>
-<body>
+<body class="home">
+
+    <ul class="session-start-options">
+
+        <li><a href="#" data-role="session-start-button" data-action="new">Create New Session</a></li>
+
+        <li><a href="#" data-role="session-start-button" data-action="join">Join Existing Session</a></li>
+
+    </ul>
+
 </body>
 </html>
