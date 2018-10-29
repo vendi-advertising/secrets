@@ -1,3 +1,5 @@
 /vendor/
 /.config/.env
 /.config/.env.dev
+/.logs/
+.php_cs.cache
